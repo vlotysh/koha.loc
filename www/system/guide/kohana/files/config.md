@@ -10,7 +10,7 @@ Configuration files are used to store any kind of configuration needed for a mod
             'foo' => 'bar',
         ),
     );
-
+/*
 If the above configuration file was called `myconf.php`, you could access it using:
 
     $config = Kohana::$config->load('myconf');
@@ -82,3 +82,4 @@ You could then do the following:
 	{
 		// echo some html to display each version
 	}
+*/
