@@ -138,7 +138,7 @@ Cookie::$expiration = Kohana::$config->load('ko32example.cookie_lifetime');
  * Session
  */
 Session::$default = 'database';
-
+Session::$default = 'cart';
 
 
 /**
