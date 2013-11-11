@@ -9,6 +9,7 @@ class Controller_Welcome extends Controller_Application  {
 			->bind('pager_links', $pager_links);
 			
 		$message = Model::factory('message');
+                
 		$message_count = $message->count_all();
 	
 		$pagination = Pagination::factory(array(

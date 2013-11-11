@@ -1,4 +1,4 @@
-<p><?=$id?></p>
+
 <?  print_r($messages_content)?>
 <p><?=$messages_content['content']?></p>
 
@@ -9,3 +9,7 @@
 <p><?=$messages_comment['content']?></p>
 <p>Автор <?=$messages_comment['username']?></p>
 <? endforeach; ?>
+
+
+
+<?=$pager_links; ?>

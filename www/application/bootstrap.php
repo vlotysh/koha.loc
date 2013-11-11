@@ -139,6 +139,8 @@ Cookie::$expiration = Kohana::$config->load('ko32example.cookie_lifetime');
  */
 Session::$default = 'database';
 
+
+
 /**
  * Set the default language
  */
@@ -184,7 +186,7 @@ Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', '
         'controller' => 'error'
     ));
 
-Route::set('view', 'view/<id>', array('id' => '.+'))
+Route::set('view', 'view/<id>(/page-<page>)', array('id' => '[0-9]+', 'page' => '[0-9]+'))
     ->defaults(array(
         'controller' => 'page',
         'action' => 'view',

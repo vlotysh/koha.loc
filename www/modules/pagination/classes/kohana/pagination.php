@@ -16,8 +16,8 @@ class Kohana_Pagination {
 		'total_items'       => 0,
 		'items_per_page'    => 10,
 		'view'              => 'pagination/basic',
-		'auto_hide'         => TRUE,
-		'first_page_in_url' => FALSE,
+		'auto_hide'         => FALSE,
+		'first_page_in_url' => TRUE,
 	);
 
 	// Current page number
@@ -260,7 +260,7 @@ class Kohana_Pagination {
 	{
 		// Automatically hide pagination whenever it is superfluous
 		if ($this->config['auto_hide'] === TRUE AND $this->total_pages <= 1)
-			return '';
+			return 'Пусто';
 
 		if ($view === NULL)
 		{
