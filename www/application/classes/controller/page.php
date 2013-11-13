@@ -94,6 +94,7 @@ class Controller_Page extends Controller_Application {
         $lang = I18n::lang(); //текущий язык
         $page->page_select($page_name, $lang);
         //print_r ($pages['0']->title); exit();
+     
         $this->template->content = View::factory('pages/pages_form')
                 ->set('page', $page);
 

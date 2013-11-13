@@ -65,7 +65,16 @@ abstract class Controller_Application extends Controller_Template {
                 );
 		}
 	}
-	 
+        public function debug($object, $die = 1) {
+            echo "<pre>";
+            print_r ($object);
+            echo "<pre>";
+            if($die == 1) {
+            exit();
+            }
+        }
+        
+        
 	/**
 	 * The after() method is called after your controller action.
 	 * In our template controller we override this method so that we can

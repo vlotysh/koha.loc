@@ -46,7 +46,8 @@
 		 <div class="container">
                   <p>  
                    <a href="<?php if ((Auth::instance()->logged_in('admin'))and($page_name)) echo url::site("page/edit/{$page_name}"); ?>">
-                   <?php if ((Auth::instance()->logged_in('admin'))and($page_name)) echo __('Edit Page')?></a>
+                   <?php if ((Auth::instance()->logged_in('admin'))and($page_name)) echo __('Edit Page')?>
+                   </a>
                    </p>
 		   <?= $content; ?>
                   </div><!-- /container -->
