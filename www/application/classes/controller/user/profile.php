@@ -51,7 +51,8 @@ class Controller_User_Profile extends Controller_Application {
 
 	public function action_private()
 	{		
-		$this->request->param('id');
+
+                $this->template->title = "Профайл";
                 $this->template->description='Private Profile';
                 $this->template->profile_class_link_menu = 'active';
 		
@@ -65,12 +66,12 @@ class Controller_User_Profile extends Controller_Application {
                 if(!$user) $this->request->redirect('noaccess');
                 
                 $pagination = Pagination::factory(array(
-  			'total_items'    => $user->messages->count_all(),
+  			'total_items'    => $user->messages->where('user_id', '=' , $user->id)->count_all(),
   			'items_per_page' => 3,
   		));
 		
 		$pager_links = $pagination->render();
-		$messages = $user->messages->limit($pagination->items_per_page)->offset($pagination->offset)->find_all(); 
+		$messages = $user->messages->limit($pagination->items_per_page)->offset($pagination->offset)->where('user_id', '=' , $user->id)->find_all(); 
 		$this->template->content = $content;
 	}
         

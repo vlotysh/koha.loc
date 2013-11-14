@@ -260,7 +260,7 @@ class Kohana_Pagination {
 	{
 		// Automatically hide pagination whenever it is superfluous
 		if ($this->config['auto_hide'] === TRUE AND $this->total_pages <= 1)
-			return 'Пусто';
+			return '';
 
 		if ($view === NULL)
 		{

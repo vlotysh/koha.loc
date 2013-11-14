@@ -32,5 +32,7 @@ return array(
     'Site Beta'=>'Сайт Бета',
     'read_next'=>'Читати далі',
     'Signup' => 'Регістрація',
+    'Our Recent Messages' => 'Ващі останні повідомлення',
+    'No Recent Messages' => 'У вас не мае повідомлень',
 );
 

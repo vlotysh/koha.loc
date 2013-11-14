@@ -69,7 +69,9 @@ class Controller_User_Messages extends Controller_Application {
 	{
 		$user = Auth::instance()->get_user();
                 $message = Model::factory('message');
-		$user_id = $this->request->param('id');
+                
+		$user_id = $user->id;
+          
 		$message->user = $user;
 		$this->template->content = View::factory('profile/message_form')
 			->bind('errors', $errors);
@@ -99,21 +101,25 @@ class Controller_User_Messages extends Controller_Application {
 		$user = Auth::instance()->get_user();
 		$user_name=$user->username;
 		$message_id = $this->request->param('message_id');
-		$messages_ = Model::factory('message');
+		$messages_ = ORM::factory('message');
 		$user_id=$user->id;
-               $message = $messages_->fin($message_id);
-               
-               if ($message[0]['user_id']!= $user_id) 
+               $message = $messages_->where('id', '=', $message_id)->find()->as_array();
+               //$this->debug($message);
+               if ($message['user_id']!= $user_id) 
                {
 			throw new Exception("User is not owner of the message");
 	       }
 		
 		$this->template->content = View::factory('profile/message_form')
-                               ->set('value', $message[0]['content']);
+                               ->set('value', $message['content']);
 		
 		if ($_POST)
 		{
-                        $messages_->edit($message_id, $_POST['content'],$user_id);
+                    
+                        $messages_->content = $_POST['content'];
+                        $messages_->where('id', '=', $message_id);
+                        $messages_->save();
+                                                             
 			$redirect = "profile/private";
 			Request::factory()->redirect($redirect);
 		}		
@@ -125,14 +131,15 @@ class Controller_User_Messages extends Controller_Application {
 		$user = Auth::instance()->get_user();
 		$message_id = $this->request->param('message_id');
 		$messages = Model::factory('message');
-                $message = $messages->fin($message_id);
+                $user_id=$user->id;
+                $message = $messages->where('id', '=', $message_id)->find($message_id)->as_array();
 		
-		if ($message[0]['user_id'] != $user_id) 
+		if ($message['user_id'] != $user_id) 
                 {
 			throw new Exception("User is not owner of the message");
 		}
 
-		$messages->delete_($message_id);
+		$messages->delete('id', $message_id);
 		$redirect = "profile/private";
 		Request::factory()->redirect($redirect);
 		

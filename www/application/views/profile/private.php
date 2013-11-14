@@ -1,6 +1,6 @@
 <h2>Private Profile for <b><?php echo $user->username; ?></b></h2>
 <p><?php echo HTML::anchor('messages/add', 'Create New Message'); ?></p>
-<h3>Our Recent Messages:</h3>
+<h3><?php echo __('Our Recent Messages');?>:</h3>
 <?php echo $pager_links; ?>
 <?php if (count($messages)) : ?>
 	<?php foreach($messages as $message) : ?>
@@ -18,7 +18,7 @@
 		<hr />
 	<?php endforeach; ?>
 <?php else: ?>
-	<p>You have no messages in the system.</p>
+	<p><?php echo __('No Recent Messages');?>.</p>
 <?php endif; ?>
 
 

@@ -32,4 +32,6 @@ return array(
     'Site Beta'=>'Site Beta',
     'read_next'=>'Read more',
     'Signup' => 'Signup',
+     'Our Recent Messages' => 'Our Recent Messages',
+    'No Recent Messages' => 'You don\'t have messages',
 );
