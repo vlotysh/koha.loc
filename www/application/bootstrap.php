@@ -181,6 +181,9 @@ Kohana::modules(array(
  * Установка роутов (путей, маршрутов)
  */
 
+
+
+
 Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', 'message' => '.+'))
     ->defaults(array(
         'controller' => 'error'
@@ -232,6 +235,14 @@ Route::set('checkusername', 'checkusername')
 		'controller' => 'account',
 		'action'     => 'checkusername',
 	)); 
+
+Route::set('language', '<lg>', array('lg' => 'ru|ua|en'))
+    ->defaults(array(
+    
+        'controller' => 'welcome',
+        'action' => 'language',
+        
+    ));
 
 Route::set('profile-private', 'profile/private')
 	->defaults(array(
@@ -286,12 +297,16 @@ Route::set('user-delete-message', 'messages/delete(/<user_id>(/<message_id>))', 
 		'action'     => 'delete'
 	));
 	
+
+
 Route::set('new-messages', 'new(/<user_id>(/<message_id>))', array('id' => '[0-9]+'))
 ->defaults(array(
 	'directory' => 'user',
 	'controller' => 'messages',
 	'action'     => 'new'
 ));
+
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',

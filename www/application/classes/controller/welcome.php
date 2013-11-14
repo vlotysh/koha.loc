@@ -13,6 +13,7 @@ class Controller_Welcome extends Controller_Application  {
 		$message_count = $message->count_all();
 	
 		$pagination = Pagination::factory(array(
+                   'current_page'      => array('source' => 'route', 'key' => 'page'),
 			'total_items'    => $message_count,
 			'items_per_page' => 5,
 		));
@@ -29,7 +30,7 @@ class Controller_Welcome extends Controller_Application  {
         public function action_language()
 	{
 		// requested language
-		$lang = $this->request->param('id');
+		$lang = $this->request->param('lg');
                 
                if( ! isset($lang) OR empty($lang)) 
                {

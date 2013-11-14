@@ -33,7 +33,7 @@
             </ul>
               <ul class="nav" style="float:right">
 	<?php foreach(Kohana::$config->load('ko32example.language') as $lg) { ?>
-                  <li class="<?php if ($lg==I18n::lang()) echo 'active'; ?>"><?php echo HTML::anchor('/welcome/language/' . $lg, __($lg)); ?></li>
+                  <li class="<?php if ($lg==I18n::lang()) echo 'active'; ?>"><?php echo HTML::anchor('/' . $lg, __($lg)); ?></li>
 	<?php } ?>
 	</ul>
           </div><!--/.nav-collapse -->
