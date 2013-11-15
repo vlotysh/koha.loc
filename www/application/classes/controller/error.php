@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.'); 
 
 class Controller_Error extends Controller_Template {
-    
+     
     public function before()
     {
         parent::before();
