@@ -307,7 +307,7 @@ Route::set('new-messages', 'new(/<user_id>(/<message_id>))', array('id' => '[0-9
 ));
 
 
-Route::set('default', '(<controller>(/<action>(/<id>)))')
+Route::set('default', '(<controller>(/<action>(/<name>)))')
 	->defaults(array(
 		'controller' => 'welcome',
 		'action'     => 'index',
