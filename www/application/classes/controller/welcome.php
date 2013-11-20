@@ -13,7 +13,7 @@ class Controller_Welcome extends Controller_Application  {
 		$message_count = $message->count_all();
 	
 		$pagination = Pagination::factory(array(
-                   'current_page'      => array('source' => 'route', 'key' => 'page'),
+                   'current_page'      => array('source' => 'query_string', 'key' => 'page'),
 			'total_items'    => $message_count,
 			'items_per_page' => 5,
 		));
