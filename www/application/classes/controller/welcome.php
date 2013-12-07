@@ -16,6 +16,7 @@ class Controller_Welcome extends Controller_Application  {
                    'current_page'      => array('source' => 'query_string', 'key' => 'page'),
 			'total_items'    => $message_count,
 			'items_per_page' => 5,
+                        'first_page_in_url' => FALSE,
 		));
 		
 	       $pager_links = $pagination->render();
