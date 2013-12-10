@@ -285,11 +285,16 @@ Route::set('user-add-message', 'messages/add(/<id>)', array('id' => '[0-9]+'))
 	
 Route::set('user-edit-message', 'messages/edit(/<user_id>(/<message_id>))', array('id' => '[0-9]+'))
 	->defaults(array(
-		'directory' => 'user',
-		'controller' => 'messages',
+		'controller' => 'page',
 		'action'     => 'edit'
 	));
 
+Route::set('page-edit', 'page/edit(/<id>)')
+	->defaults(array(
+		
+		'controller' => 'page',
+		'action'     => 'edit'
+	));
 Route::set('user-delete-message', 'messages/delete(/<user_id>(/<message_id>))', array('id' => '[0-9]+'))
 	->defaults(array(
 		'directory' => 'user',

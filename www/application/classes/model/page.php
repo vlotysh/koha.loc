@@ -21,6 +21,7 @@ class Model_Page extends ORM {
 	{
 		
              $this->where('page_name', '=', $action_name)->and_where('language', '=', $lang);
+     
              return $this->find();
 	}
         

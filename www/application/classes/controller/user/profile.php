@@ -39,13 +39,38 @@ class Controller_User_Profile extends Controller_Application {
                 $this->template->title=__('Admin');
                 $this->template->admin_class_link_menu = 'active';
                 
-                $content = View::factory('profile/admin')
-			->bind('user', $user);
-		
-                $user = Auth::instance()->get_user();
+                
+                
+                
+		$pages = ORM::factory('page')->where('language', '=', I18n::lang());//->order_by('id', 'asc')->find_all();
                
+                $count = $pages->count_all();
+                
+                $pagination = Pagination::factory(array(
+                   'current_page'      => array('source' => 'query_string', 'key' => 'page'),
+			'total_items'    => $count,
+			'items_per_page' => 5,
+                        'first_page_in_url' => FALSE,
+		));
+               $pager_links = $pagination->render();
+                
+                 $pages_all = $pages->order_by('id', 'asc')
+                         ->where('language', '=', I18n::lang())
+                         ->limit($pagination->items_per_page)
+                         ->offset($pagination->offset)
+                         ->find_all();
+          
+                 echo I18n::lang();
+                echo 'Количество'.$count;
+                $user = Auth::instance()->get_user();
+                
                 if((!$user)or(!Auth::instance()->logged_in('admin'))) $this->request->redirect('noaccess');
               
+                $content = View::factory('profile/admin')
+			->bind('user', $user)
+                        ->bind('pages_all',$pages_all)
+                        ->bind('pager_links', $pager_links);
+                
 	        $this->template->content = $content;	
 	}
 

@@ -83,20 +83,21 @@ class Controller_Page extends Controller_Application {
             $this->request->redirect('noaccess');
         }
 
-        $this->template->description = 'Список редактируемых страниц';
-        $this->template->content = View::factory('pages/edit')
-                ->bind('errors', $errors);
 
         $page_name = $this->request->param('id');
         //print_r ($page_name); exit();
-        $this->template->page_name = NULL;
-        $page = ORM::factory('page');
+        $this->template->page_name = $page_name;
+        
+        echo  $page_name;
+       // $pageone = ORM::factory('page')->where('title', '=', 'about')->and_where('language', '=', I18n::lang());
+      $page = ORM::factory('page');
         $lang = I18n::lang(); //текущий язык
-        $page->page_select($page_name, $lang);
+       $pageone = $page->page_select($page_name, $lang);
+        echo '(---)'. $page_name;
         //print_r ($pages['0']->title); exit();
-     
+     $this->template->title = $pageone->title;
         $this->template->content = View::factory('pages/pages_form')
-                ->set('page', $page);
+                ->set('page', $pageone);
 
         if ($_POST) {
             $page = ORM::factory('page', $_POST['id']);
