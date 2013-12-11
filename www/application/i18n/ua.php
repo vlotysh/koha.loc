@@ -34,5 +34,7 @@ return array(
     'Signup' => 'Регістрація',
     'Our Recent Messages' => 'Ващі останні повідомлення',
     'No Recent Messages' => 'У вас не мае повідомлень',
+    'New_comments' => 'Ведіть коментар',
+    'Remember' => 'Запам\'яти',
 );
 

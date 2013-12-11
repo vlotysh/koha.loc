@@ -19,6 +19,9 @@
 	
 	<?php echo Form::label('password')?>
 	<?php echo Form::password('password'); ?>
+         <br>
+        <?  echo __('Remember')?>
+	<?php echo Form::checkbox('remember', 1); ?>
 	<br>
 	<?php echo Form::submit('submit', 'Login'); ?>
 	

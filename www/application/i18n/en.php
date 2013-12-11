@@ -34,4 +34,6 @@ return array(
     'Signup' => 'Signup',
      'Our Recent Messages' => 'Our Recent Messages',
     'No Recent Messages' => 'You don\'t have messages',
+    'New_comments' => 'Enter your comment',
+    'Remember' => 'Remember',
 );

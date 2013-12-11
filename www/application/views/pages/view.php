@@ -4,6 +4,8 @@
 
 <?  print_r($messages_comments)?>
 
+<?=$new_comments;?>
+
 <? foreach ($messages_comments as $messages_comment) : ?>
 
 <p><?=$messages_comment['content']?></p>

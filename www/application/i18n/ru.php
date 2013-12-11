@@ -34,4 +34,6 @@ return array(
     'Signup' => 'Регистрация',
     'Our Recent Messages' => 'Ваши последние сообщения',
     'No Recent Messages' => 'У вас нет cообщений',
+     'New_comments' => 'Введите текст коментария',
+     'Remember' => 'Запомнить',
 );

@@ -23,7 +23,12 @@ class Controller_User_Account extends Controller_Application {
 			->rule('username', 'not_empty')
 			->rule('password', 'not_empty')
 			->rule('password', 'min_length', array(':value', 3));
-			$remember = isset($post['remember']);
+                        if(isset($post['remember'])) {
+                            $remember = TRUE;
+                            
+                        } else {
+                            $remember = FALSE;
+                        }
 		
 			// if the form is valid and the username and password matches
 			if ($post->check() && Auth::instance()->login($post['username'], $post['password'], $remember))
@@ -62,7 +67,7 @@ class Controller_User_Account extends Controller_Application {
 	{
 		Auth::instance()->logout();
 		//Request::instance()->redirect('login');
-                $this->request->redirect('login');
+                $this->request->redirect('/');
 	}
 
      // create account

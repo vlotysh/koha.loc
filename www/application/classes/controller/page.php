@@ -25,7 +25,8 @@ class Controller_Page extends Controller_Application {
         $content = View::factory('pages/view')
                 ->bind('messages_content', $messages_content)
                 ->bind('messages_comments', $messages_comments)
-                ->bind('pager_links', $pager_links);
+                ->bind('pager_links', $pager_links)
+                ->bind('new_comments', $new_comments);
              
 
                         
@@ -43,9 +44,10 @@ class Controller_Page extends Controller_Application {
 			'items_per_page' => 1,
 		));
           
+             
         $pager_links =  $pagination->render();
         $messages_content = $message->get_article($id);
-
+        $new_comments = View::factory('pages/comment');
         $messages_comments = $message->get_comments($pagination->items_per_page, $pagination->offset, $id);
 
 
