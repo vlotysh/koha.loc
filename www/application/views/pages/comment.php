@@ -10,7 +10,7 @@
         
         </div>
 	<?php $id = isset($page->id) ? $page->id : ''; ?>
-        <?php echo Form::hidden('id', Auth::instance()->get_user()->id,array('rows' => 1, 'cols' => 1,'style'=>'resize:none;width:0px;visibility: hidden;padding: 0px;')); ?>
+        
 
 <div class="field">
 		<?php echo Form::submit('submit', "OK"); ?>

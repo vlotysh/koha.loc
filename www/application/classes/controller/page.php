@@ -24,6 +24,7 @@ class Controller_Page extends Controller_Application {
 
         $content = View::factory('pages/view')
                 ->bind('messages_content', $messages_content)
+                ->bind('author', $user)
                 ->bind('messages_comments', $messages_comments)
                 ->bind('pager_links', $pager_links)
                 ->bind('new_comments', $new_comments);
@@ -34,11 +35,13 @@ class Controller_Page extends Controller_Application {
         
         $lang = I18n::lang(); //текущий язык
         
-        $message = Model::factory('message');
+        $message = ORM::factory('message',$id);
         
             
-        $total_items = $message->count_comments($id); 
-        
+        $total_items = $message->comments->count_all(); 
+        $user = $message->user->username;
+       
+ 
              $pagination = Pagination::factory(array(
                         'current_page'      => array('source' => 'route', 'key' => 'page'),
 			'total_items'    =>  $total_items,
@@ -49,20 +52,28 @@ class Controller_Page extends Controller_Application {
         $pager_links =  $pagination->render();
         $messages_content = $message->get_article($id);
         $new_comments = View::factory('pages/comment')->bind('error', $error);
+        
         $messages_comments = $message->get_comments($pagination->items_per_page, $pagination->offset, $id);
-
+        
+     //   $messages_comments = $message->comments->find_all();
 
 
         $this->template->content = $content;
 
         if ($_POST) {
-        
-       $post = Validation::factory($_POST)
+        $date = Arr::extract($_POST, array('content'));
+       $post = Validation::factory($date)
 			->rule('content', 'not_empty')
 			->rule('content', 'min_length', array(':value', 3));
 
-       if($post ->check()) {
-           $error = 'Ok'; 
+       if($post->check()) {
+           $comment = ORM::factory('comment');
+           $comment->post_id = $id;
+           $comment->content = $date['content'];
+           $comment->user_id = Auth::instance()->get_user()->id;
+           $comment->date = date("Y-m-d");
+           $comment->save();
+           
            $redirect = "/view/" . $id;
            Request::factory()->redirect($redirect);
        } else {

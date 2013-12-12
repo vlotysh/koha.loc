@@ -7,6 +7,8 @@ defined('SYSPATH') or die('No direct script access.');
  * Handles CRUD for user messages
  */
 class Model_comment extends Kohana_ORM {
+    
+    
     protected $_belongs_to = array(
       'message'  => array(
                'model'       => 'message',

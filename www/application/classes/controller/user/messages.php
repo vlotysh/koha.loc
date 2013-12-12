@@ -104,7 +104,8 @@ class Controller_User_Messages extends Controller_Application {
 		$messages_ = ORM::factory('message');
 		$user_id=$user->id;
                $message = $messages_->where('id', '=', $message_id)->find()->as_array();
-               //$this->debug($message);
+  
+    
                if ($message['user_id']!= $user_id) 
                {
 			throw new Exception("User is not owner of the message");

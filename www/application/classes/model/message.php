@@ -20,6 +20,13 @@ class Model_message extends Kohana_ORM {
                'foreign_key' => 'post_id',
            )
     );
+     
+     protected $_has_one = array(
+      'user'    => array(
+               'model'       => 'user',
+               'foreign_key' => 'id',
+           )
+    );
     // Define rules
     protected $_rules = array(
         'user_id' => array(
@@ -179,6 +186,13 @@ class Model_message extends Kohana_ORM {
                 ->where('post_id', '=', $post_id)
                 ->execute()
                 ->as_array();
+        
+        
+        return $this->from('comments')
+                ->where('post_id', '=', $post_id)
+                        ->limit($limit)
+                        ->offset($offset)
+                        ->find_all();
 
         if ($query)
             return count($query);
