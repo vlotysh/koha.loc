@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 abstract class Controller_Application extends Controller_Template {
-
-	public $template = 'template';
+    protected $user;
+    public $template = 'template';
 
          /**
 	 * The before() method is called before your controller action.
@@ -54,6 +54,9 @@ abstract class Controller_Application extends Controller_Template {
                         
 		);
 		
+                $this->auth = Auth::instance();
+		$this->user = $this->auth->get_user();
+                
 		$this->template->scripts = array(
                         'jquery',
                         'bootstrap.min',

@@ -4,7 +4,7 @@ return array(
 	'driver'       => 'orm',
 	'hash_method'  => 'sha256',
 	'hash_key'     => 'dsadsadad',
-	'lifetime'     => 0,
+	'lifetime'     => 100030,
 	'session_type' => Session::$default,
 	'session_key'  => 'auth_user',
 );
