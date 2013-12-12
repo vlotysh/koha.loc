@@ -13,6 +13,13 @@ class Model_message extends Kohana_ORM {
     protected $_tableComments = 'comments';
     // Define relationships
     protected $_belongs_to = array('user' => array());
+    
+     protected $_has_many = array(
+      'comments'    => array(
+               'model'       => 'comment',
+               'foreign_key' => 'post_id',
+           )
+    );
     // Define rules
     protected $_rules = array(
         'user_id' => array(
@@ -187,8 +194,8 @@ class Model_message extends Kohana_ORM {
                 ->where('post_id', '=', $post_id)
                 ->limit($limit)
                 ->offset($offset)
-                ->execute()
-                ->as_array();
+                ->execute();
+             
 
         if ($query)
             return $query;

@@ -27,6 +27,7 @@ class Controller_Page extends Controller_Application {
                 ->bind('messages_comments', $messages_comments)
                 ->bind('pager_links', $pager_links)
                 ->bind('new_comments', $new_comments);
+                
              
 
                         
@@ -47,7 +48,7 @@ class Controller_Page extends Controller_Application {
              
         $pager_links =  $pagination->render();
         $messages_content = $message->get_article($id);
-        $new_comments = View::factory('pages/comment');
+        $new_comments = View::factory('pages/comment')->bind('error', $error);
         $messages_comments = $message->get_comments($pagination->items_per_page, $pagination->offset, $id);
 
 
@@ -55,12 +56,23 @@ class Controller_Page extends Controller_Application {
         $this->template->content = $content;
 
         if ($_POST) {
+        
+       $post = Validation::factory($_POST)
+			->rule('content', 'not_empty')
+			->rule('content', 'min_length', array(':value', 3));
 
-
-
-
+       if($post ->check()) {
+           $error = 'Ok'; 
+           $redirect = "/view/" . $id;
+           Request::factory()->redirect($redirect);
+       } else {
             $redirect = "/view/" . $id;
-            Request::factory()->redirect($redirect);
+          //  Request::factory()->redirect($redirect);
+            $error = 'NO Ok';
+            
+       }
+       
+           
         }
     }
 

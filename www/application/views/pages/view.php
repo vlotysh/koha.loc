@@ -2,9 +2,8 @@
 <?  print_r($messages_content)?>
 <p><?=$messages_content['content']?></p>
 
-<?  print_r($messages_comments)?>
-
-<?=$new_comments;?>
+<?//if(!empty($new_comments)):?>
+<? print_r($messages_comments);?>
 
 <? foreach ($messages_comments as $messages_comment) : ?>
 
@@ -15,3 +14,4 @@
 
 
 <?=$pager_links; ?>
+<?//  endif;?>

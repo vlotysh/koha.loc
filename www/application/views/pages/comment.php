@@ -5,17 +5,17 @@
                   
                <p><?php echo __('New_comments'); ?> </p>
 		
-		<?php echo Form::textarea('content',array('rows' => 5, 'cols' => 30,'style'=>'width:800px;')); ?>
+		<?php echo Form::textarea('content'); ?>
               
         
         </div>
 	<?php $id = isset($page->id) ? $page->id : ''; ?>
-        <?php echo Form::textarea('id', $id,array('rows' => 1, 'cols' => 1,'style'=>'resize:none;width:0px;visibility: hidden;')); ?>
+        <?php echo Form::hidden('id', Auth::instance()->get_user()->id,array('rows' => 1, 'cols' => 1,'style'=>'resize:none;width:0px;visibility: hidden;padding: 0px;')); ?>
 
 <div class="field">
-		<?php echo Form::submit('comment', "OK"); ?>
+		<?php echo Form::submit('submit', "OK"); ?>
 	</div>
 <?php echo Form::close(); ?>
 
-
+<?=$error?>
  <?  endif;?>
