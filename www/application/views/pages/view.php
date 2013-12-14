@@ -7,13 +7,20 @@
 
 <? foreach ($messages_comments as $messages_comment) : ?>
 
+
+    <blockquote>
+
+
+
 <p><?=$messages_comment['content']?></p>
 <? if($messages_content['user_id'] == $messages_comment['user_id']):?>
 
-<p>Автор статьи</p>
+<p><small>Автор статьи</small></p></p>
 <?else:?>
-<p>Автор <?=$messages_comment['username']?></p>
+    <p><small>Автор <?=$messages_comment['username']?></small></p>
 <?  endif;?>
+
+    </blockquote>
 
 <? endforeach; ?>
 
@@ -26,6 +33,7 @@
 
 <? else:?>
 
-<p>Нет комментариев</p>
+    <blockquote>Нет комментариев</blockquote>
+
 <? endif; ?>
 <?=$new_comments?>

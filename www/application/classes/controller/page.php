@@ -45,7 +45,7 @@ class Controller_Page extends Controller_Application {
              $pagination = Pagination::factory(array(
                         'current_page'      => array('source' => 'route', 'key' => 'page'),
 			'total_items'    =>  $total_items,
-			'items_per_page' => 1,
+			'items_per_page' => 10,
 		));
           
              
