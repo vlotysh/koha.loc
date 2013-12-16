@@ -78,7 +78,7 @@ class Controller_User_Messages extends Controller_Application {
 		
 		if ($_POST)
 		{
-			$_POST['date_published'] = date('Y-m-d');
+			$_POST['date_published'] = time();
 			$message->values($_POST);
 			if ($message->check())
 			{

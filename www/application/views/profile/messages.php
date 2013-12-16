@@ -5,7 +5,7 @@
 		<?php echo $message->content; ?>
 		<br />
 		<span class="published">
-			<?php echo Date::fuzzy_span($message->date_published)?>
+			<?php echo date("j. n. Y G:i:s",$message->date_published);?>
 		</span>
 		<?php if (time() - $message->date_published >0) : ?>
 			<div class="options">

@@ -6,11 +6,10 @@
 		<?php echo $message->content; ?>
 		<br />
 		<span class="published">
-			<?php echo Date::fuzzy_span($message->date_published)?>
+			Дата публикации <?=date("j. n. Y G:i:s",$message->date_published);?>
 		</span>
         <p><a class="btn primary large" href="<?= url::site()."view/".$message->id; ?>"><?=__('read_next')?></a></p>
-                 
-	</p>
+         	
 
 	<hr />
 

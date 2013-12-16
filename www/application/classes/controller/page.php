@@ -23,7 +23,7 @@ class Controller_Page extends Controller_Application {
         $id = $this->request->param('id');
 
         $content = View::factory('pages/view')
-                ->bind('messages_content', $messages_content)
+                ->bind('message', $messages_content)
                 ->bind('author', $user)
                 ->bind('messages_comments', $messages_comments)
                 ->bind('pager_links', $pager_links)
