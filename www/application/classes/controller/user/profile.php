@@ -101,5 +101,12 @@ class Controller_User_Profile extends Controller_Application {
 	}
         
         
+        public function action_user() {
+            $user_id = $this->request->param('id');
+            $user_model = ORM::factory('user', $user_id);
+            $this->template->title = "Страничка пользователя ".$user_model->username;
+            
+            
+        }
 
 }

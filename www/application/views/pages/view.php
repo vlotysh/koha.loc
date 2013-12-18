@@ -1,12 +1,11 @@
 
-<? if (Auth::instance()->get_user()->id == $message['user_id']): ?>
-    
-
+<? if (Auth::instance()->logged_in() && Auth::instance()->get_user()->id == $message['user_id']): ?>
+  
     <p><a href="<?php echo url::site("messages/edit/{$message['user_id']}/{$message['id']}") ?>">Edit Message</a></p>
 <? endif; ?>
 <? print_r($message) ?>
 <p><?= $message['content'] ?></p>
-<p>Автор <?= $author ?>. Дата публикации <?= date("j.n.Y G:i:s", $message['date_published']) ?></p>
+<p>Автор <a href="/profile/user:<?=$message['user_id']?>"><?= $author?></a>. Дата публикации <?= date("j.n.Y G:i:s", $message['date_published']) ?></p>
 
 <? if (count($messages_comments) > 0): ?>
 
@@ -23,7 +22,7 @@
 
                 <p><small>Автор статьи</small></p></p>
         <? else: ?>
-            <p><small>Автор <?= $messages_comment['username'] ?></small></p>
+            <p><small>Автор <a href="/profile/user:<?=$messages_comment['user_id']?>"><?= $messages_comment['username'] ?></a></small></p>
         <? endif; ?>
 
         </blockquote>
