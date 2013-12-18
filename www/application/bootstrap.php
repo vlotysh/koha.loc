@@ -267,6 +267,15 @@ Route::set('profile', 'profile/<id>(/<optional>)', array(
 		'action'     => 'index',
 	));
 
+Route::set('profile', 'profile/user:(<id>)', array(
+		'id' => '[0-9]+', 
+		))
+	->defaults(array(
+		'directory' => 'user',
+		'controller' => 'profile',
+		'action'     => 'user',
+	));
+
 Route::set('user-messages', 'messages/get_messages/<id>(/<optional>)', array(
 		'id' => '[0-9]+', 
 		'optional' => '.*'))
