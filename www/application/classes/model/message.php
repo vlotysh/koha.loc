@@ -216,6 +216,24 @@ class Model_message extends Kohana_ORM {
         else
             return array();
     }
+    
+    
+     public function get_pms($limit = 10, $offset = 0, $resipe_id = '') {
+        $query = DB::select('pms.id', 'pms.title', 'pms.sender_id','pms.recipient_id', 'pms.content','pms.date', 'pms.read','users.username')
+                ->from('pms')
+                ->join('users')
+                ->on('pms.sender_id', ' = ', 'users.id')
+                ->where('recipient_id', '=', $resipe_id)
+                ->limit($limit)
+                ->offset($offset)
+                ->execute();
+             
+
+        if ($query)
+            return $query;
+        else
+            return array();
+    }
 
     public function get_user($user_id = '') {
         $query = DB::select('username')

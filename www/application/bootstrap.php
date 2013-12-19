@@ -276,6 +276,24 @@ Route::set('profile', 'profile/user:(<id>)', array(
 		'action'     => 'user',
 	));
 
+
+Route::set('pm','profile/pm/<id>',array('id' => '[0-9]+'))
+        ->defaults(array(
+                'directory' => 'user',
+		'controller' => 'profile',
+		'action'     => 'pm'
+            
+        ));
+
+Route::set('get_pm','messages/get_pm/<id>(/<optional>)',array('id' => '[0-9]+','optional' => '.*'))
+        ->defaults(array(
+                'directory' => 'user',
+		'controller' => 'messages',
+		'action'     => 'get_pm',
+            
+        ));
+        
+
 Route::set('user-messages', 'messages/get_messages/<id>(/<optional>)', array(
 		'id' => '[0-9]+', 
 		'optional' => '.*'))
@@ -291,7 +309,9 @@ Route::set('user-add-message', 'messages/add(/<id>)', array('id' => '[0-9]+'))
 		'controller' => 'messages',
 		'action'     => 'add'
 	));
-	
+
+        
+        
 Route::set('user-edit-message', 'messages/edit(/<user_id>(/<message_id>))', array('user_id' => '[0-9]+'))
 	->defaults(array(
                 'directory' => 'user',

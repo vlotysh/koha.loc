@@ -17,9 +17,12 @@ class Model_User extends ORM {
 	protected $_has_many = array(
 		'user_tokens' => array('model' => 'user_token'),
 		'roles'       => array('model' => 'role', 'through' => 'roles_users'),
-                'messages'	  => array('model' => 'message'),
+                'messages'  => array('model' => 'message'),
+                'inbox'	  => array('model' => 'Pm', 'foreign_key' => 'recipient_id'),
+                'outbox' => array('model' => 'Pm', 'foreign_key' => 'sender_id'),
 	); 
-
+        
+        
 	/**
 	 * Rules for the user model. Because the password is _always_ a hash
 	 * when it's set,you need to run an additional not_empty rule in your controller

@@ -12,7 +12,8 @@ class Controller_User_Messages extends Controller_Application {
 	{		
 		URL::redirect();	
    	}
-
+        
+     
 	public function action_get_messages() 
 	{
 		$user = Auth::instance()->get_user();

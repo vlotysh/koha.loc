@@ -81,9 +81,11 @@ class Controller_User_Profile extends Controller_Application {
                 $this->template->description='Private Profile';
                 $this->template->profile_class_link_menu = 'active';
 		
+                $massege_model = ORM::factory('message');
 		$content = View::factory('profile/private')
 			->bind('user', $user)
 			->bind('messages', $messages)
+                        ->bind('pms', $pms)
 			->bind('pager_links', $pager_links);
 		
 		$user = Auth::instance()->get_user();
@@ -97,9 +99,32 @@ class Controller_User_Profile extends Controller_Application {
 		
 		$pager_links = $pagination->render();
 		$messages = $user->messages->limit($pagination->items_per_page)->offset($pagination->offset)->where('user_id', '=' , $user->id)->find_all(); 
+                
+                
+                $private_messages = $massege_model->get_pms(10,0,$user->id);
+                        
+                        //$user->inbox->where('recipient_id','=',$user->id)->find_all();
+                echo (count($private_messages));
+                $pms = View::factory('profile/pms')
+                        ->bind('private_messages', $private_messages);
+                
+                
 		$this->template->content = $content;
 	}
         
+        public function action_pm() {
+         
+            $pm_id = $this->request->param('id');
+           // $pm_text = Request::factory('messages/get_pm/'.$pm_id)->execute();
+            
+            $content = View::factory('profile/pm')->bind('pm_text', $pm_text);
+            
+            $id = $this->request->param('id');
+            $pm = ORM::factory('pm');
+            $pm_text  = $pm->get_pm($pm_id);
+            
+            $this->template->content = $content;
+        }
         
         public function action_user() {
             $user_id = $this->request->param('id');

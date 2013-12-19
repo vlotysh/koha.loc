@@ -1,4 +1,6 @@
-<h2>Private Profile for <b><?php echo $user->username; ?></b></h2>
+<div class="span5">
+    
+    <h2>Private Profile for <b><?php echo $user->username; ?></b></h2>
 <p><?php echo HTML::anchor('messages/add', 'Create New Message'); ?></p>
 <h3><?php echo __('Our Recent Messages');?>:</h3>
 <?php echo $pager_links; ?>
@@ -24,3 +26,7 @@
 
 
 <?php echo $pager_links; ?>
+</div>
+<div class="span6">
+   <?=$pms;?>
+</div>
