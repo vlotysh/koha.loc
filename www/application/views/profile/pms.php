@@ -1,3 +1,4 @@
+<?if(count($private_messages) > 1):?>
 <table width="100%" class="table">
  <tr>
     <td>Заголовок</td>
@@ -15,3 +16,8 @@
 <?  endforeach;?>
 
 </table>
+
+<?else:?>
+
+<span>Нет сообщений!</span>
+<? endif; ?>

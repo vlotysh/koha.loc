@@ -26,10 +26,18 @@
               <li class="<?= $about_class_link_menu; ?>" ><a href="<?= url::site('about'); ?>" ><?php echo __('About')?></a></li>
               <li class="<?= $contact_class_link_menu; ?>"><a href="<?= url::site('contact'); ?>"><?php echo __('Contact')?></a></li>
               <li class="<?= $why_class_link_menu; ?>"><a href="<?= url::site('why_site'); ?>"><?php echo __('Why use Site?')?></a></li>
+              
+              <li class="<?php if (Auth::instance()->logged_in()) echo $profile_class_link_menu; ?>">
+               <a href="<?php if (Auth::instance()->logged_in()) echo url::site('profile/private'); else echo url::site('profile/private'); ?>">
+              <?php if (Auth::instance()->logged_in()) echo __('Profile'); if (Auth::instance()->logged_in('participant')) echo __('Profile'); ?></a>
+              
+              </li>
+              
+              <?if (Auth::instance()->logged_in('admin')):?>
               <li class="<?php if (Auth::instance()->logged_in('admin')) echo $admin_class_link_menu; else echo $profile_class_link_menu; ?>">
               <a href="<?php if (Auth::instance()->logged_in('admin')) echo url::site('profile/admin'); else echo url::site('profile/private'); ?>">
               <?php if (Auth::instance()->logged_in('admin')) echo __('Admin'); if (Auth::instance()->logged_in('participant')) echo __('Profile'); ?></a></li>
-              
+              <?  endif;?>
             </ul>
               <ul class="nav" style="float:right">
 	<?php foreach(Kohana::$config->load('ko32example.language') as $lg) { ?>

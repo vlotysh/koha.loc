@@ -23,7 +23,6 @@ Class Model_Pm extends ORM {
                 ->on('pms.sender_id', ' = ', 'users.id')
                 ->where('pms.id', '=', $id)
                 ->limit(1)
-                ->as_object()
                 ->execute();
                
              

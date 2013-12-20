@@ -1,2 +1,5 @@
+<!-- Вывод одного сообщения -->
 
-<div class="span3"><?=$pm_text->title;?> <?//=$pm_text->username?></div>
+<?  foreach ($pm_text as $text):?>
+<div class="span3"><?=$text['title'];?> , От пользователя <?=$text['username']?></div>
+<?  endforeach;?>
