@@ -41,9 +41,11 @@
               
               
               <?php if (Auth::instance()->logged_in() && $msCount > 0):?>
+             
               <li>
+                
                  <a href="<?php if (Auth::instance()->logged_in()) echo url::site('profile/private');?>">  
-                     У вас <?if($msCount > 0) if($msCount = 1)echo $msCount.' cообщение'; elseif($msCount > 1 && $msCount < 5) echo $msCount.'сообщения'; else  echo $msCount.'сообщений'; else echo 'нет новых  сообщений';?>
+                     У вас <?if($msCount > 0) if($msCount == 1)echo $msCount.' cообщение'; elseif($msCount > 1 && $msCount < 5) echo $msCount.'сообщения'; else  echo $msCount.'сообщений'; else echo 'нет новых  сообщений';?>
                  </a>
               </li>
               <?  endif;?>

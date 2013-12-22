@@ -91,7 +91,7 @@ abstract class Controller_Application extends Controller_Template {
 	public function after()
 	{
              $ms = ORM::factory('pm')->where('read', '=', 0)->count_all();
-            
+            //$this->debug($ms);
             $this->template->msCount = $ms;
           
             if ($this->auto_render)
