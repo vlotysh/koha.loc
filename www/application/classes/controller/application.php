@@ -47,10 +47,12 @@ abstract class Controller_Application extends Controller_Template {
                 $this->template->langg ='';
                 $this->template->lang_class_link_menu = '';
                 $this->template->page_name=NULL;
-			
+		$this->template->msCount = 0;
+                
 			$this->template->styles = array(
 			'bootstrap.min',
-                        'bootstrap-responsive.min'
+                        'bootstrap-responsive.min',
+                        'style'
                         
 		);
 		
@@ -67,6 +69,8 @@ abstract class Controller_Application extends Controller_Template {
                         
                 );
 		}
+                
+                
 	}
         public function debug($object, $die = 1) {
             echo "<pre>";
@@ -86,11 +90,17 @@ abstract class Controller_Application extends Controller_Template {
 	 */
 	public function after()
 	{
-		if ($this->auto_render)
+             $ms = ORM::factory('pm')->where('read', '=', 0)->count_all();
+            
+            $this->template->msCount = $ms;
+          
+            if ($this->auto_render)
 		{
 			//$this->template->styles = array_merge( $this->template->styles, $styles );
 			//$this->template->scripts = array_merge( $this->template->scripts, $scripts );
 		}
+                
+                
 		parent::after();
 	}
 		

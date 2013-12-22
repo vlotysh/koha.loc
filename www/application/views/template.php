@@ -29,7 +29,7 @@
               
               <li class="<?php if (Auth::instance()->logged_in()) echo $profile_class_link_menu; ?>">
                <a href="<?php if (Auth::instance()->logged_in()) echo url::site('profile/private'); else echo url::site('profile/private'); ?>">
-              <?php if (Auth::instance()->logged_in()) echo __('Profile'); if (Auth::instance()->logged_in('participant')) echo __('Profile'); ?></a>
+              <?php if (Auth::instance()->logged_in()) echo __('Profile'); ?></a>
               
               </li>
               
@@ -37,6 +37,15 @@
               <li class="<?php if (Auth::instance()->logged_in('admin')) echo $admin_class_link_menu; else echo $profile_class_link_menu; ?>">
               <a href="<?php if (Auth::instance()->logged_in('admin')) echo url::site('profile/admin'); else echo url::site('profile/private'); ?>">
               <?php if (Auth::instance()->logged_in('admin')) echo __('Admin'); if (Auth::instance()->logged_in('participant')) echo __('Profile'); ?></a></li>
+              <?  endif;?>
+              
+              
+              <?php if (Auth::instance()->logged_in() && $msCount > 0):?>
+              <li>
+                 <a href="<?php if (Auth::instance()->logged_in()) echo url::site('profile/private');?>">  
+                     У вас <?if($msCount > 0) if($msCount = 1)echo $msCount.' cообщение'; elseif($msCount > 1 && $msCount < 5) echo $msCount.'сообщения'; else  echo $msCount.'сообщений'; else echo 'нет новых  сообщений';?>
+                 </a>
+              </li>
               <?  endif;?>
             </ul>
               <ul class="nav" style="float:right">

@@ -104,7 +104,7 @@ class Controller_User_Profile extends Controller_Application {
                 $private_messages = $massege_model->get_pms(10,0,$user->id);
                         
                         //$user->inbox->where('recipient_id','=',$user->id)->find_all();
-                echo (count($private_messages));
+              //  echo (count($private_messages));
                 $pms = View::factory('profile/pms')
                         ->bind('private_messages', $private_messages);
                 
@@ -120,9 +120,12 @@ class Controller_User_Profile extends Controller_Application {
             $content = View::factory('profile/pm')->bind('pm_text', $pm_text);
             
             $id = $this->request->param('id');
-            $pm = ORM::factory('pm');
+            $pm = ORM::factory('pm',$pm_id);
+           
+            $pm->where('id', '=', $pm_id)->set('read', 1)->save();
+                       
             $pm_text  = $pm->get_pm($pm_id);
-            
+            $this->template->title = 'Сообщения!';
             $this->template->content = $content;
         }
         
