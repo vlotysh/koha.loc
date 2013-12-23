@@ -157,6 +157,7 @@ if(!in_array($lang, Kohana::$config->load('ko32example.language'))) {
 	$lang = 'ru';
 }
 
+
 // set language
 I18n::lang($lang);
 /**

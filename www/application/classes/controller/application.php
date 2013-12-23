@@ -3,7 +3,7 @@
 abstract class Controller_Application extends Controller_Template {
     protected $user;
     public $template = 'template';
-
+    
          /**
 	 * The before() method is called before your controller action.
 	 * In our template controller we override this method so that we can
@@ -12,8 +12,15 @@ abstract class Controller_Application extends Controller_Template {
 	 */
 	public function before()
 	{
+            
 		parent::before();
-
+                 $log = 0;
+                 
+                  if(!Auth::instance()->logged_in() && $log == 1) {
+                    $this->request->redirect('/login');
+                    $log = 1;
+                    
+                  }
 		if ($this->auto_render)
 		{
 			// keep the last url if it's not home/language

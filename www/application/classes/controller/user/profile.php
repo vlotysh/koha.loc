@@ -129,15 +129,7 @@ class Controller_User_Profile extends Controller_Application {
             $this->template->content = $content;
         }
         
-        public function action_addpm() {
-            if (Request::initial()->is_ajax()) {
-              //  $result = array('code'=>'yES!!!');
-                $result['code'] = 'YES!';
-                sleep(3);
-               echo json_encode($result); 
-               exit();
-            }
-        }
+      
         
         
         public function action_user() {
@@ -151,6 +143,16 @@ class Controller_User_Profile extends Controller_Application {
             $this->template->content = $content;
             
             
+        }
+        
+          public function action_addpm() {
+            if (Request::initial()->is_ajax()) {
+              //  $result = array('code'=>'yES!!!');
+                $result['code'] = 'YES!';
+                sleep(3);
+               echo json_encode($result); 
+               exit();
+               }
         }
 
 }
