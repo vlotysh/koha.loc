@@ -64,7 +64,8 @@ abstract class Controller_Application extends Controller_Template {
                         'bootstrap.min',
                         'jquery.alphanumeric.min',
                         'jquery.password.sm.min',
-                        'main'
+                        'main',
+                    
                         //'less-1.2.1.min'
                         
                 );

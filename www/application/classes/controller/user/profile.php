@@ -129,10 +129,26 @@ class Controller_User_Profile extends Controller_Application {
             $this->template->content = $content;
         }
         
+        public function action_addpm() {
+            if (Request::initial()->is_ajax()) {
+              //  $result = array('code'=>'yES!!!');
+                $result['code'] = 'YES!';
+                sleep(3);
+               echo json_encode($result); 
+               exit();
+            }
+        }
+        
+        
         public function action_user() {
             $user_id = $this->request->param('id');
+            $content = View::factory('profile/user')
+                    ->bind('user', $user_model);
+                    
+            
             $user_model = ORM::factory('user', $user_id);
             $this->template->title = "Страничка пользователя ".$user_model->username;
+            $this->template->content = $content;
             
             
         }

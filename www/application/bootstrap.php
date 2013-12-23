@@ -251,6 +251,14 @@ Route::set('profile-private', 'profile/private')
 		'action'     => 'private',
 	));
 
+Route::set('profile-addpm', 'profile/addpm')
+	->defaults(array(
+		'directory' => 'user',
+		'controller' => 'profile',
+		'action'     => 'addpm',
+	));
+
+
 Route::set('profile-admin', 'profile/admin')
 	->defaults(array(
 		'directory' => 'user',
