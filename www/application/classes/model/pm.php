@@ -1,6 +1,7 @@
 <?php
 
 Class Model_Pm extends ORM {
+     protected $_table = 'Pms';
 /*public function get_pm($id = '') {
         $query = DB::select('pms.id', 'pms.title', 'pms.sender_id','pms.recipient_id', 'pms.content','pms.date', 'pms.read','users.username')
                 ->from('pms')
@@ -30,6 +31,17 @@ Class Model_Pm extends ORM {
         if ($query)
            return $query;
  
+    }
+    
+     public function add_pm($title = '...',$content = 'Сообщение', $sender_id = '14', $recipient_id = '13') {
+         
+       $this->title = ($title == '') ? '...' : $title;
+       $this->content = $content;
+       $this->sender_id = $sender_id;   
+       $this->recipient_id = $recipient_id;
+       $this->date = time();
+       if ($this->save()){ return true;}
+      
     }
 
 };

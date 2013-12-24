@@ -11,7 +11,7 @@
     <td><a href="/profile/pm/<?=$private_message['id']?>"><?=$private_message['title']?></a></td>
     <td><a href="/profile/user:<?=$private_message['sender_id']?>"><?=$private_message['username']?></a></td>
     <td><?=$private_message['content']?></td>
-    <td><?=$private_message['date']?></td>
+    <td><?=date("j. n. Y G:i:s", $private_message['date'])?></td>
 </tr>
 <?  endforeach;?>
 

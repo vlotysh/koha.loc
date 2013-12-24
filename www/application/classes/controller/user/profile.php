@@ -134,6 +134,9 @@ class Controller_User_Profile extends Controller_Application {
         
         public function action_user() {
             $user_id = $this->request->param('id');
+            if (Auth::instance()->logged_in() && Auth::instance()->get_user()->id == $user_id) {
+                $this->request->redirect('/profile/private');
+            }
             $content = View::factory('profile/user')
                     ->bind('user', $user_model);
                     
@@ -148,8 +151,18 @@ class Controller_User_Profile extends Controller_Application {
           public function action_addpm() {
             if (Request::initial()->is_ajax()) {
               //  $result = array('code'=>'yES!!!');
-                $result['code'] = 'YES!';
-                sleep(3);
+                    
+//             /   $title = $this->request->POST('title');
+                $title = Arr::get($_POST, 'title', '');
+                $pm = ORM::factory('pm')->add_pm($title);
+                
+                if($pm) {
+                    $result['code'] = 'YES!';
+                    $result['title'] = $title;
+                }else {
+                   $result['code'] = 'NO'; 
+                    
+                }
                echo json_encode($result); 
                exit();
                }

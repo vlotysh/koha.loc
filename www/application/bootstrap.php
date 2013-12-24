@@ -252,6 +252,9 @@ Route::set('profile-private', 'profile/private')
 		'action'     => 'private',
 	));
 
+
+//Отправка личных сообщений
+
 Route::set('profile-addpm', 'profile/addpm')
 	->defaults(array(
 		'directory' => 'user',
