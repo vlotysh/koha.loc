@@ -12,18 +12,22 @@
 
 </div>
 <div class="modal-body">
-
+    <div class="ms_block">
     <?=Form::open()?>
     <p>Заголовок</p>
     <p><?=Form::input('title','...',array('id' => 'title','placeholder' => '...'))?></p>
 <p>Текст сообщения</p>
-    <p><?=  Form::textarea('content','',array('id'=> 'content','rows' => '4', 'cols' => '100'))?></p>
-    <p id="text"></p>
-    <?=Form::close()?>
+    <p><?=Form::textarea('content','',array('id'=> 'content','rows' => '4', 'cols' => '100'))?></p>
+    <p><?=Form::hidden('user_id',$user->id)?></p>
+    </div>
+     <?=Form::close()?>
+    <div class="alert" style="display: none;">Сообщение Отправлено!</div>
+   
+   
 </div>
 <div class="modal-footer">
 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-<button id="send" rel="<?=$user->id;?>" class="btn btn-primary">Save changes</button>
+<button id="send" rel="<?=$user->id;?>" class="btn btn-primary">Отправить сообщение</button>
 </div>
 </div>
 </p>

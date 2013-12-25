@@ -101,7 +101,7 @@ class Controller_User_Profile extends Controller_Application {
 		$messages = $user->messages->limit($pagination->items_per_page)->offset($pagination->offset)->where('user_id', '=' , $user->id)->find_all(); 
                 
                 
-                $private_messages = $massege_model->get_pms(10,0,$user->id);
+                $private_messages = $massege_model->get_pms(15,0,$user->id);
                         
                         //$user->inbox->where('recipient_id','=',$user->id)->find_all();
               //  echo (count($private_messages));
@@ -150,21 +150,38 @@ class Controller_User_Profile extends Controller_Application {
         
           public function action_addpm() {
             if (Request::initial()->is_ajax()) {
+                
+                
+                 $post = Validation::factory($_POST);
+            $post -> rule('title', 'max_length', array(':value', 40))
+                  -> rule('content', 'not_empty');
+	    if($post -> check()) {
               //  $result = array('code'=>'yES!!!');
                     
 //             /   $title = $this->request->POST('title');
-                $title = Arr::get($_POST, 'title', '');
-                $pm = ORM::factory('pm')->add_pm($title);
+                $user_id = Auth::instance()->get_user()->id;
+                $pm = Arr::extract($_POST, array('title', 'content', 'user_id'), 'Не установлено');
+                
+                $pm = ORM::factory('pm')->add_pm($pm['title'], $pm['content'],$user_id, $pm['user_id']);
+                
+                
                 
                 if($pm) {
                     $result['code'] = 'YES!';
-                    $result['title'] = $title;
+                    $result['title'] = $pm['title'];
                 }else {
                    $result['code'] = 'NO'; 
                     
                 }
-               echo json_encode($result); 
-               exit();
+              
+               
+            } else {
+                $result['code'] = 'no CONTENT'; 
+            }
+            
+             echo json_encode($result); 
+             exit();
+            
                }
         }
 

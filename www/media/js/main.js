@@ -11,8 +11,10 @@
                    data:postData,
                    dataType: "json",
                    success: function(result) {
-                    
-                     $('#text').delay(1000).html(result.code);
+                    $('.ms_block').hide();
+                     $('.modal-footer').hide();
+                     $('.alert').show();
+                     $('#text').html(result.code);
                      $('#content').val('');//ОЧистка формы
                    }
                })
@@ -24,7 +26,7 @@
  function getData(obj_form ) {
     var hData = {};
     
-    $('input, textarea, select').each(function (){
+    $('input, textarea, select, hidden').each(function (){
         if(this.name && this.name!='') {
             hData[this.name] = this.value;
             console.log('hData['+this.name + ']=' + hData[this.name]);

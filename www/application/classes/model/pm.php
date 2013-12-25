@@ -33,7 +33,7 @@ Class Model_Pm extends ORM {
  
     }
     
-     public function add_pm($title = '...',$content = 'Сообщение', $sender_id = '14', $recipient_id = '13') {
+     public function add_pm($title = '...',$content = 'Сообщение', $sender_id = '', $recipient_id = '') {
          
        $this->title = ($title == '') ? '...' : $title;
        $this->content = $content;
