@@ -1,8 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Controller_Application extends Controller_Template {
-    protected $user;
-    public $template = 'template';
+abstract class Controller_Application extends Controller_Primer {
+   
     
          /**
 	 * The before() method is called before your controller action.
@@ -14,69 +13,12 @@ abstract class Controller_Application extends Controller_Template {
 	{
             
 		parent::before();
-                 $log = 0;
-                 
-                  if(!Auth::instance()->logged_in() && $log == 1) {
-                    $this->request->redirect('/login');
-                    $log = 1;
-                    
-                  }
-		if ($this->auto_render)
-		{
-			// keep the last url if it's not home/language
-			if(Request::current()->action() != 'language') 
-                        {
-				Session::instance()->set('controller', Request::current()->uri());
-			}
-			
-			if (Auth::instance()->logged_in('participant'))
-			{
-				$this->template->loged = TRUE;
-			}
-                        
-                        if (Auth::instance()->logged_in('admin'))
-			{
-				$this->template->loged = TRUE;
-			}
-			
-			View::set_global('site_name', __('Site Beta'));
+            
+                 if (!$this->auth->logged_in()) {
+                     
+                     $this->request->redirect('login');
+                 }
 		
-		$this->template->content = '';
-                $this->template->description = '';
-                $this->template->title = '';
-                $this->template->about_class_link_menu = '';
-                $this->template->why_class_link_menu = '';
-                $this->template->welcom_class_link_menu = '';
-                $this->template->contact_class_link_menu = '';
-                $this->template->profile_class_link_menu = '';
-                $this->template->admin_class_link_menu = '';
-                $this->template->author = 'I am';
-                $this->template->langg ='';
-                $this->template->lang_class_link_menu = '';
-                $this->template->page_name=NULL;
-		$this->template->msCount = 0;
-                
-			$this->template->styles = array(
-			'bootstrap.min',
-                        'bootstrap-responsive.min',
-                        'style'
-                        
-		);
-		
-                $this->auth = Auth::instance();
-		$this->user = $this->auth->get_user();
-                
-		$this->template->scripts = array(
-                        'jquery',
-                        'bootstrap.min',
-                        'jquery.alphanumeric.min',
-                        'jquery.password.sm.min',
-                        'main',
-                    
-                        //'less-1.2.1.min'
-                        
-                );
-		}
                 
                 
 	}

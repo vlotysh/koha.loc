@@ -16,6 +16,7 @@
     <div class="wrapper">
 <header>
 
+    <?if(Auth::instance()->logged_in()):?> 
  <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -59,6 +60,8 @@
         </div>
       </div>
     </div>   
+    
+<?  endif;?>
     
 <?= View::factory('common/header')->render(); ?>
 </header>		
