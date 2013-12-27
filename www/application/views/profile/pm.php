@@ -22,7 +22,13 @@
    <?=Form::close()?>
     
      </div>
-    <div class="alert" style="display: none;">Сообщение Отправлено!</div>
+    
+    <div class="progress progress-striped active" style="display: none;">
+  <div class="bar" style="width: 100%;"></div>
+</div>
+  <div class="alert alert-success" style="display: none;">Отправлено!</div>
+    
+
     <button id="send" class="btn btn-primary">Отправить сообщение</button>
  
 </div>

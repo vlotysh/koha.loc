@@ -3,6 +3,9 @@
                 console.log('Все ок!');
                 var postData =  getData('.modal-body');
                 $('#text').html('Началось!');
+                $('.ms_block').hide();
+                $('.modal-footer').hide();
+                $('.progress').show();
                $.ajax({
                    
                    type: "POST",
@@ -11,11 +14,9 @@
                    data:postData,
                    dataType: "json",
                    success: function(result) {
-                    $('.ms_block').hide();
-                     $('.modal-footer').hide();
-                     $('.alert').show();
-                     $('#text').html(result.code);
-                     $('#content').val('');//ОЧистка формы
+                   $('.progress').hide();
+                   $('.alert-success').show();
+                   $('#content').val('');//ОЧистка формы
                    }
                })
         });

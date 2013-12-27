@@ -151,7 +151,7 @@ class Controller_User_Profile extends Controller_Application {
           public function action_addpm() {
             if (Request::initial()->is_ajax()) {
                 
-                
+                sleep(2);
                  $post = Validation::factory($_POST);
             $post -> rule('title', 'max_length', array(':value', 40))
                   -> rule('content', 'not_empty');
