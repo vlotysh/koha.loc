@@ -6,6 +6,7 @@
                 $('.ms_block').hide();
                 $('.modal-footer').hide();
                 $('.progress').show();
+               $('#send').attr("disabled", "disabled");
                $.ajax({
                    
                    type: "POST",
@@ -15,6 +16,7 @@
                    dataType: "json",
                    success: function(result) {
                    $('.progress').hide();
+                   
                    $('.alert-success').show();
                    $('#content').val('');//ОЧистка формы
                    }
