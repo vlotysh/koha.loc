@@ -8,9 +8,8 @@
 
 .row-fluid  div.colum-left {
    position: fixed;
-   background-color: #1B1B1B;
-    background-image: linear-gradient(to bottom, #666666, #cccccc);
-    background-repeat: repeat-x;
+  
+    background-image: url('/media/images/gray.jpg');
     color: #fff;
     width: 250px;
     padding: 10px;
@@ -25,8 +24,9 @@
 .row-fluid  div.colum-left li.active {
     background-color: #080808;
 }
-.row-fluid  div.colum-left li:focus {
+.row-fluid  div.colum-left li:hover,.row-fluid  div.colum-left li a:hover  {
        background-color: #080808;
+       text-decoration: none;
     
 }
 .row-fluid  div.colum-left li a {

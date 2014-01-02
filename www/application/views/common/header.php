@@ -5,7 +5,7 @@
 	<em>Because it's all about you!</em>
 </p> -->
 <div class="container">
-<br><br><br>
+
 <!--<p>Что-то после меню
 <br>Может лого?</p>-->
 
