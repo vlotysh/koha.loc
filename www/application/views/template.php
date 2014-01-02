@@ -13,16 +13,12 @@
 </head>
 
 <body >
-    <div class="wrapper">
-<header>
-
-    <?if(Auth::instance()->logged_in()):?> 
- <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-         <a class="brand" href="<?= url::site(); ?>">Site</a>
-          <div class="nav-collapse">
-            <ul class="nav">
+    <div class="container-fluid">
+<div class="row-fluid">
+    
+        <div class="span3 colum-left">
+     
+             <ul class="list-group">
               <li class="<?= $welcom_class_link_menu; ?>"><a href="<?= url::site(); ?>"><?php echo __('Home')?></a></li>
               <li class="<?= $about_class_link_menu; ?>" ><a href="<?= url::site('about'); ?>" ><?php echo __('About')?></a></li>
               <li class="<?= $contact_class_link_menu; ?>"><a href="<?= url::site('contact'); ?>"><?php echo __('Contact')?></a></li>
@@ -56,35 +52,32 @@
                   <li class="<?php if ($lg==I18n::lang()) echo 'active'; ?>"><?php echo HTML::anchor('/' . $lg, __($lg)); ?></li>
 	<?php } ?>
 	</ul>
-          </div><!--/.nav-collapse -->
+            
+            
+            
+            
+      
         </div>
-      </div>
-    </div>   
-    
-<?  endif;?>
-    
-<?= View::factory('common/header')->render(); ?>
-</header>		
-		 <div class="container">
+        
+    <div class="span9 colum-right">
                   <p>  
                    <a href="<?php if ((Auth::instance()->logged_in('admin'))and($page_name)) echo url::site("page/edit/{$page_name}"); ?>">
                    <?php if ((Auth::instance()->logged_in('admin'))and($page_name)) echo __('Edit Page')?>
                    </a>
                    </p>
 		   <?= $content; ?>
-                  </div><!-- /container -->
+                 </div>
+                 </div>
                  
-   <div class="push"><!--//--></div>
- </div>
+   </div>   <!-- /container -->
+ <div class="push"><!--//--></div>
   
 <? foreach ($scripts as $script) : ?>
 	<script src="<?= url::base(); ?>media/js/<?= $script; ?>.js" /></script>
 <? endforeach; ?>    
     
-<footer class="container">
-<?= View::factory('common/footer')->render(); ?>
-</footer>
-                 
+
+              
 </body>
 
 </html>

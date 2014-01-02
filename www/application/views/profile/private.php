@@ -1,3 +1,4 @@
+<div class="row">
 <div class="span5">
     
     <h2>Private Profile for <b><?php echo $user->username; ?></b></h2>
@@ -29,4 +30,5 @@
 </div>
 <div class="span6">
    <?=$pms;?>
+</div>
 </div>

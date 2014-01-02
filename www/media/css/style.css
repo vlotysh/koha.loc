@@ -6,6 +6,47 @@
         Purpose of the stylesheet follows.
 */
 
-.navbar {
-   
+.row-fluid  div.colum-left {
+   position: fixed;
+   background-color: #1B1B1B;
+    background-image: linear-gradient(to bottom, #666666, #cccccc);
+    background-repeat: repeat-x;
+    color: #fff;
+    width: 250px;
+    padding: 10px;
+    height: 100%;
+    
+}
+.row-fluid  div.colum-left li {
+    width: 100%;
+    list-style-type: none;
+}
+
+.row-fluid  div.colum-left li.active {
+    background-color: #080808;
+}
+.row-fluid  div.colum-left li:focus {
+       background-color: #080808;
+    
+}
+.row-fluid  div.colum-left li a {
+    display: block;
+    color: #fff;
+}
+
+.row-fluid  div.colum-left ul {
+    margin: 0;
+}
+
+.container-fluid {
+    padding-left:0;
+}
+
+.row-fluid {
+    min-width: 900px;
+    max-width: 1090px;
+}
+.row-fluid .span9 , div.colum-right {
+   margin: 0;
+ padding-left: 290px;
 }

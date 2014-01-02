@@ -1,16 +1,16 @@
 <!-- Вывод одного сообщения -->
 
 <?  foreach ($pm_text as $text):?>
-<div class="row">
+
     <div class="col-sm-5 col-md-6">Загловок <?=$text['title'];?></div>
-</div>
-<div class="row">
+
+
 <div class="col-sm-5 col-md-6"><?=$text['content'];?></div>
-</div>
-<div class="row">
+
+
 <div class="bar">От пользователя <?=$text['username']?></div>
-</div>
-<Div class="row">
+
+
      <div class="ms_block">
  <p>   Ответить пользователю</p>
 <?=Form::open()?>
@@ -30,6 +30,5 @@
     
 
     <button id="send" class="btn btn-primary">Отправить сообщение</button>
- 
-</div>
+
     <?  endforeach;?>
