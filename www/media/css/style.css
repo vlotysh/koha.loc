@@ -19,19 +19,27 @@
 .row-fluid  div.colum-left li {
     width: 100%;
     list-style-type: none;
+    
+    border-bottom:1px solid #000; 
 }
 
-.row-fluid  div.colum-left li.active {
+.row-fluid  div.colum-left li.active a{
     background-color: #080808;
+    color:#fff;
+    
 }
 .row-fluid  div.colum-left li:hover,.row-fluid  div.colum-left li a:hover  {
        background-color: #080808;
        text-decoration: none;
+       color:#fff;
     
 }
 .row-fluid  div.colum-left li a {
     display: block;
-    color: #fff;
+
+    color: #000;
+    padding: 10px 5px;
+    
 }
 
 .row-fluid  div.colum-left ul {
@@ -44,9 +52,23 @@
 
 .row-fluid {
     min-width: 900px;
-    max-width: 1090px;
+    max-width: 1920px;
 }
+
 .row-fluid .span9 , div.colum-right {
    margin: 0;
  padding-left: 290px;
 }
+
+
+span.round {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  text-align: center;
+  background-color: red;
+  color: #fff;
+  margin-left: 8px;
+  border-radius: 2px; 
+} 

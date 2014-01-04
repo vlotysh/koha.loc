@@ -36,5 +36,6 @@ return array(
     'No Recent Messages' => 'У вас не мае повідомлень',
     'New_comments' => 'Ведіть коментар',
     'Remember' => 'Запам\'яти',
+    'Messages' => 'Повідомлення',
 );
 

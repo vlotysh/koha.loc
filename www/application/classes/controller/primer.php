@@ -38,12 +38,17 @@ abstract class Controller_Primer extends Controller_Template {
 		}
                 
 			View::set_global('site_name', __('Site Beta'));
-		
+		//Модели 
+                        $this->massege_model = ORM::factory('message');
+                        $this->pm = ORM::factory('pm');
+                        
+                        
 		$this->template->content = '';
                 $this->template->description = '';
                 $this->template->title = '';
                 $this->template->about_class_link_menu = '';
                 $this->template->why_class_link_menu = '';
+                $this->template->message_class_link_menu = '';
                 $this->template->welcom_class_link_menu = '';
                 $this->template->contact_class_link_menu = '';
                 $this->template->profile_class_link_menu = '';

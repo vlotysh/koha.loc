@@ -18,7 +18,7 @@ abstract class Controller_Application extends Controller_Primer {
                      
                      $this->request->redirect('login');
                  }
-		
+		//Объясление моделей
                 
                 
 	}

@@ -24,11 +24,20 @@
               <li class="<?= $contact_class_link_menu; ?>"><a href="<?= url::site('contact'); ?>"><?php echo __('Contact')?></a></li>
               <li class="<?= $why_class_link_menu; ?>"><a href="<?= url::site('why_site'); ?>"><?php echo __('Why use Site?')?></a></li>
               
+               <li class="<?= $message_class_link_menu; ?>">
+                
+                 <a href="<?php if (Auth::instance()->logged_in()) echo url::site('mail');?>">  
+                    <?php echo __('Messages')?> <?if($msCount > 0):?> <span class="round"><?=$msCount?></span><?endif;?>
+                 </a>
+              </li>
+              
               <li class="<?php if (Auth::instance()->logged_in()) echo $profile_class_link_menu; ?>">
                <a href="<?php if (Auth::instance()->logged_in()) echo url::site('profile/private'); else echo url::site('profile/private'); ?>">
               <?php if (Auth::instance()->logged_in()) echo __('Profile'); ?></a>
               
               </li>
+              
+              
               
               <?if (Auth::instance()->logged_in('admin')):?>
               <li class="<?php if (Auth::instance()->logged_in('admin')) echo $admin_class_link_menu; else echo $profile_class_link_menu; ?>">
@@ -39,12 +48,7 @@
               
               <?php if (Auth::instance()->logged_in() && $msCount > 0):?>
              
-              <li>
-                
-                 <a href="<?php if (Auth::instance()->logged_in()) echo url::site('profile/private');?>">  
-                     У вас <?if($msCount > 0) if($msCount == 1)echo $msCount.' cообщение'; elseif($msCount > 1 && $msCount < 5) echo $msCount.' сообщения'; else  echo $msCount.' сообщений'; else echo 'нет новых  сообщений';?>
-                 </a>
-              </li>
+             
               <?  endif;?>
             </ul>
               <ul class="nav" style="float:right">

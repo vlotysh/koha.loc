@@ -36,4 +36,5 @@ return array(
     'No Recent Messages' => 'You don\'t have messages',
     'New_comments' => 'Enter your comment',
     'Remember' => 'Remember',
+    'Messages' => 'Messages',
 );

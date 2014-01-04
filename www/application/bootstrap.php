@@ -253,6 +253,19 @@ Route::set('profile-private', 'profile/private')
 	));
 
 
+Route::set('mail', 'mail(/<action>(/id))', array('id' => '[0-9]+'))
+	->defaults(array(
+                'controller' => 'mail',
+		'action'     => 'index',
+	));
+
+Route::set('mail-view','mail/view/<id>',array('id' => '[0-9]+'))
+        ->defaults(array(
+                'controller' => 'mail',
+		'action'     => 'pm'
+            
+        ));
+
 //Отправка личных сообщений
 
 Route::set('profile-addpm', 'profile/addpm')
