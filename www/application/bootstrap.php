@@ -262,7 +262,7 @@ Route::set('mail', 'mail(/<action>(/id))', array('id' => '[0-9]+'))
 Route::set('mail-view','mail/view/<id>',array('id' => '[0-9]+'))
         ->defaults(array(
                 'controller' => 'mail',
-		'action'     => 'pm'
+		'action'     => 'view'
             
         ));
 

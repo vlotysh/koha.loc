@@ -17,7 +17,7 @@
 <?  endforeach;?>
 
 </table>
-
+<?=$pager_links;?>
 <?else:?>
 
 <span>Нет сообщений!</span>

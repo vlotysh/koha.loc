@@ -26,24 +26,25 @@ class Controller_Mail extends Controller_Application {
         if (!$user)
             $this->request->redirect('noaccess');
         
-       $private_messages =  $this->massege_model->get_pms(15, 0, $user->id);
+       
 
 
-/*
-        $pms = View::factory('profile/pms')
-                ->bind('private_messages', $private_messages);
-
-
+        $pm_model = ORM::factory('pm')->where('recipient_id', '=', $user->id)->count_all();
+       
         $pagination = Pagination::factory(array(
-                    'total_items' => $user->messages->where('user_id', '=', $user->id)->count_all(),
-                    'items_per_page' => 3,
+                    'total_items' => $pm_model,
+                    'items_per_page' => 10,
         ));
 
         $pager_links = $pagination->render();
+        
+        $private_messages =  $this->massege_model->get_pms($pagination->items_per_page, $pagination->offset, $user->id);
+        /*
         $messages = $user->messages->limit($pagination->items_per_page)->offset($pagination->offset)->where('user_id', '=', $user->id)->find_all();
         */
          $pms = View::factory('profile/pms')
-                ->bind('private_messages', $private_messages);
+                ->bind('private_messages', $private_messages)
+                ->bind('pager_links', $pager_links);
          
         $this->template->content = $pms;
     }

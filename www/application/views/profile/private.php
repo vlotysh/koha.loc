@@ -28,7 +28,5 @@
 
 <?php echo $pager_links; ?>
 </div>
-<div class="span6">
-   <?=$pms;?>
-</div>
+
 </div>

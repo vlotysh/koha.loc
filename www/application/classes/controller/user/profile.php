@@ -84,7 +84,6 @@ class Controller_User_Profile extends Controller_Application {
         $content = View::factory('profile/private')
                 ->bind('user', $user)
                 ->bind('messages', $messages)
-                ->bind('pms', $pms)
                 ->bind('pager_links', $pager_links);
 
         $user = Auth::instance()->get_user();
@@ -102,12 +101,6 @@ class Controller_User_Profile extends Controller_Application {
 
 
         $private_messages = $massege_model->get_pms(15, 0, $user->id);
-
-
-
-        $pms = View::factory('profile/pms')
-                ->bind('private_messages', $private_messages);
-
 
         $this->template->content = $content;
     }
