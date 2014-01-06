@@ -74,7 +74,8 @@ abstract class Controller_Primer extends Controller_Template {
                         'jquery.alphanumeric.min',
                         'jquery.password.sm.min',
                         'main',
-                    
+                        'prefixfree.min',
+                                       
                         //'less-1.2.1.min'
                         
                 );

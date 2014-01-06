@@ -2,7 +2,7 @@
     $('#myModal').modal(options);
 </script>
 
-<p>Это страничка пользователя <?= $user->username; ?></p>
+<p><?= $user_info->fio; ?></p>
 
 <p>
     <a href="#myModal" role="button" class="btn" data-toggle="modal">Отправить пользователю сообщение</a>    

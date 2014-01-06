@@ -128,10 +128,15 @@ class Controller_User_Profile extends Controller_Application {
             $this->request->redirect('/profile/private');
         }
         $content = View::factory('profile/user')
-                ->bind('user', $user_model);
+                ->bind('user', $user_model)
+                ->bind('user_info',$user_info);
+                
 
 
         $user_model = ORM::factory('user', $user_id);
+        
+        $user_info = $user_model->info;
+        
         $this->template->title = "Страничка пользователя " . $user_model->username;
         $this->template->content = $content;
     }

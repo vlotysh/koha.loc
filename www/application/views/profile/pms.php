@@ -1,5 +1,14 @@
-
+<ul class="messages">
+        <li class="<?=$inbox?>">
+            <a href="<?=  URL::base('').'mail'?>">Входящие</a>
+    </li>
+    <li class="<?=$outbox?>">
+        <a href="<?=   URL::base('').'mail/outbox'?>">Исходящие</a>
+    </li>
+   
+    </ul>
 <?if(count($private_messages) >= 1):?>
+ 
 <table width="100%" class="table">
  <tr>
     <td>Заголовок</td>

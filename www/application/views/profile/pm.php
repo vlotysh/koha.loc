@@ -2,14 +2,17 @@
 
 <?  foreach ($pm_text as $text):?>
 
-    <div class="col-sm-5 col-md-6">Загловок <?=$text['title'];?></div>
+    <div>Заголовок <?=$text['title'];?></div>
 
 
-<div class="col-sm-5 col-md-6"><?=$text['content'];?></div>
+    <div><?=$text['content'];?></div>
 
 
-<div class="bar">От пользователя <?=$text['username']?></div>
+    <div class="bar">От <?if(Auth::instance()->get_user()->id == $text['sender_id']):?>Вас<?else:?>пользователя <a href="<?=  URL::base()?>profile/user:<?=$text['sender_id'];?>"><?=$text['username']?></a><?  endif;?></div>
+<div>Было отправлено в <?=date("j. n. Y G:i:s", $text['date'])?></div>
 
+
+<?if(Auth::instance()->get_user()->id != $text['sender_id']):?>
 
      <div class="ms_block">
  <p>   Ответить пользователю</p>
@@ -30,5 +33,5 @@
     
 
     <button id="send" class="btn btn-primary">Отправить сообщение</button>
-
+<?  endif;?>
     <?  endforeach;?>

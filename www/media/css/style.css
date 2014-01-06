@@ -57,7 +57,7 @@
 
 .row-fluid .span9 , div.colum-right {
    margin: 0;
- padding-left: 290px;
+ padding:10px 10px 10px 280px;
 }
 
 
@@ -72,3 +72,32 @@ span.round {
   margin-left: 8px;
   border-radius: 2px; 
 } 
+
+.messages {
+    overflow: hidden;
+    margin: 0 0 10px 0;
+}
+
+.messages li{
+    display: block;
+    float: left;
+    width: 72px;
+    text-align: center;
+    height: 15px;
+    padding: 10px;
+    line-height: 15px;
+    border: 1px solid #ccc;
+    border-radius: 7px 7px 0 0;
+    
+       
+}
+.messages li.active,.messages li.active a{
+    background-color: #000;
+    color: #fff;
+}
+
+.messages li a{
+    display: block;
+    text-decoration: none; 
+    
+}

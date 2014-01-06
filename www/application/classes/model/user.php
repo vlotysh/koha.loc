@@ -18,8 +18,11 @@ class Model_User extends ORM {
 		'user_tokens' => array('model' => 'user_token'),
 		'roles'       => array('model' => 'role', 'through' => 'roles_users'),
                 'messages'  => array('model' => 'message'),
-                'inbox'	  => array('model' => 'Pm', 'foreign_key' => 'recipient_id'),
-                'outbox' => array('model' => 'Pm', 'foreign_key' => 'sender_id'),
+               
+	); 
+        protected $_has_one = array(
+		'info' => array('model' => 'info'),
+		               
 	); 
         
         

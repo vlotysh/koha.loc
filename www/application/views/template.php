@@ -63,7 +63,7 @@
       
         </div>
         <?  endif;?>
-    <div class="span9 colum-right">
+    <div class="span10 colum-right">
         <?= View::factory('common/header')->render(); ?>
                   <p>  
                    <a href="<?php if ((Auth::instance()->logged_in('admin'))and($page_name)) echo url::site("page/edit/{$page_name}"); ?>">
