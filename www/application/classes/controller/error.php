@@ -7,7 +7,7 @@ class Controller_Error extends Controller_Template {
         parent::before();
         // Internal request only!
         if (Request::$initial !== Request::$current) 
-        {
+        { 
             if ($message = rawurldecode($this->request->param('message'))) 
             {
                 $this->template->message = $message;
